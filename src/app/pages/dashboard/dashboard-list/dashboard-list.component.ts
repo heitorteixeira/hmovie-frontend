@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { MovieDTO } from '../../../../models/movie.dto';
 import { API_CONFIG } from '../../../../config/api.config';
+import { StorageService } from '../../../services/storageService';
 
 @Component({
   selector: 'app-dashboard-list',
@@ -17,6 +18,7 @@ export class DashboardListComponent implements OnInit {
   baseUrl: string = API_CONFIG.baseUrl;
 
   constructor(private dashboardService: DashboardService,
+              private data: StorageService,
               private router: Router) { }
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class DashboardListComponent implements OnInit {
     )
   }
 
+  selectMovie(movie){
+    this.data.setMovie(movie);
+    this.router.navigate(['detail'], {skipLocationChange: true});
+  }
 
   onSuccess(res) {  
     if (res != undefined) {
@@ -38,6 +44,10 @@ export class DashboardListComponent implements OnInit {
         this.movies.push(item);
       });
     }  
+  }  
+
+  onScroll(){  
+    this.getUpcomingMovies(); 
   }  
 
 }
