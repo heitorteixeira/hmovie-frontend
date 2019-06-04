@@ -16,6 +16,23 @@ export class DashboardService {
 
   constructor(private http: HttpClient) {}
 
+  search(search: string, page: number = 1): Observable<MovieDTO[]>{
+    const url = `${API_CONFIG.baseUrl}/search`;
+
+    return this.http.post(
+            url,
+            { page: page,
+              query: search,
+              includeAdult: 'true'
+            },
+            {
+              responseType: 'json'
+          }).pipe(
+          catchError(this.handleError),
+          map(this.jsonDataToMoviesDTO)
+    )
+  }
+
   getAllUpcoming(page: number = 1): Observable<MovieDTO[]>{
     const url = `${API_CONFIG.baseUrl}/${page}`;
     return this.http.get(url).pipe(

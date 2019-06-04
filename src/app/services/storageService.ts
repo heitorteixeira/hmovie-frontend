@@ -24,4 +24,21 @@ export class StorageService {
     }
   }
 
+  getTextSearch() : string {
+    let str = localStorage.getItem(STORAGE_KEYS.textSearch);
+    if (str == null){
+        return null;
+    }else{
+        return JSON.parse(str);
+    }
+  }
+
+  setTextSearch(obj : string){
+    if (obj == null){
+        localStorage.removeItem(STORAGE_KEYS.textSearch);
+    }else{
+        localStorage.setItem(STORAGE_KEYS.textSearch, JSON.stringify(obj));
+    }
+  }
+
 }

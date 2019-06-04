@@ -1,0 +1,14 @@
+.action{
+    font-size: 25px;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #333;
+}
+
+#play_button {
+    position:absolute;
+    transition: .5s ease;
+    left: 10%;
+}

@@ -1,11 +1,22 @@
-
+<nav class="navbar navbar-inverse fixed-top">
+    <a class="navbar-brand" style="color:white" [routerLink]="['dashboard/', {new: true}]">Hmovie</a>
+    <form class="form-inline" >
+        <button class="btn btn-outline-success my-2 my-sm-0" id="play_button" (click)="getUpcomingMovies()" type="button">Upcoming</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" #search>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchMovie()" type="button">Search</button>
+    </form>
+    <br>
+</nav>
+<br><br><br>
+<div class="action" *ngIf="searching==true">Searching</div>
 <div class="action" *ngIf="searching==false">Upcoming Movies</div>
 <div class="container" style="scroll-margin-top: 50px;">
     <div class="row"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()">
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()" 
+            >
         <div class="col-lg-3 col-md-6" *ngFor="let movie of movies">
             <div class="card w-100 p-3 border-light" style="width: 18rem;" (click)="selectMovie(movie)" style="cursor: pointer">
                 <img src="//image.tmdb.org/t/p/w185/{{movie.posterPath}}" 

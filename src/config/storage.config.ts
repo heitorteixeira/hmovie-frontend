@@ -1,3 +1,4 @@
 export const STORAGE_KEYS = {
-    movie: "movie"
+    movie: "movie",
+    textSearch: "textSearch"
 }
