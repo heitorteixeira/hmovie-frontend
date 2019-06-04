@@ -1,8 +1,19 @@
 
+<div class="action" *ngIf="searching==false">Upcoming Movies</div>
 <div class="container" style="scroll-margin-top: 50px;">
-    <div class="row">
+    <div class="row"
+            >
         <div class="col-lg-3 col-md-6" *ngFor="let movie of movies">
-            {{movie.originalTitle}}
+            <div class="card w-100 p-3 border-light" style="width: 18rem;" (click)="selectMovie(movie)" style="cursor: pointer">
+                <img src="//image.tmdb.org/t/p/w185/{{movie.posterPath}}" 
+                    class="card-img-top" 
+                    onError="this.src='assets/images/image-not-found.jpg';">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{movie.originalTitle}}</strong></h5>
+                    <div class="small rgba-white-slight">{{movie.releaseDate}}</div>
+                    <i class="glyphicon small" *ngFor="let genre of movie.genres">{{genre.name + ' '}}</i>
+                </div>
+            </div>
         </div>
     </div>
 </div>
