@@ -1,0 +1,26 @@
+<div class="container">
+        
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-sm-2 col-md-4">
+                <img src="{{baseUrl}}/sid{{movie.posterPath}}" 
+                     class="card-img-top" 
+                     onError="this.src='assets/images/image-not-found.jpg';"/>
+            </div>
+            <div class="form-group col-sm-6 col-md-8">
+                <h4 class="h2 border-left p1-2">{{movie.originalTitle}}</h4> 
+                <cite title="Source Title">{{movie.overview}}</cite>
+                <br/>
+                <br/>
+                <p> 
+                    <i class="glyphicon" *ngFor="let genre of movie.genres">{{genre.name + ' '}}</i>
+                    <br/> 
+                    <i class="glyphicon glyphicon-globe">{{movie.releaseDate}}</i>
+                </p>
+                <button (click)="back()" class="btn btn-outline-info btn-sm">Back</button>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
