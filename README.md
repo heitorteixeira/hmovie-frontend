@@ -1,6 +1,11 @@
-# HmovieFronteng
+# HmovieFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+
+This app use Angular 7 whith:
+-ngx-infinite-scroll 
+-bootstrap
+-jquery
 
 ## Development server
 
